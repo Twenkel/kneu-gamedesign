@@ -12,6 +12,7 @@ public class Health : MonoBehaviour, IDamageable
     private Rigidbody2D body;
 
     public int Current => current;
+    public int Max => maxHealth;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Health : MonoBehaviour, IDamageable
     public void ResetHealth()
     {
         current = maxHealth;
+        OnHealthChanged();
     }
 
     public void Configure(int newMax)
@@ -36,6 +38,7 @@ public class Health : MonoBehaviour, IDamageable
         invulnerableUntil = Time.time + invulnerableTime;
 
         current = Mathf.Max(0, current - amount);
+        OnHealthChanged();
 
         Vector2 dir = ((Vector2)transform.position - sourcePosition).normalized;
         body.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
@@ -46,4 +49,5 @@ public class Health : MonoBehaviour, IDamageable
 
     protected virtual void OnDamaged() { }
     protected virtual void Die() => gameObject.SetActive(false);
+    protected virtual void OnHealthChanged() { }
 }

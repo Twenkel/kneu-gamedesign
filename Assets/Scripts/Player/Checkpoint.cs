@@ -11,5 +11,6 @@ public class Checkpoint : MonoBehaviour
 
         respawn.SetCheckpoint(transform.position);
         if (flag != null) flag.color = activeColor;
+        SaveSystem.Save(GameProgress.ToData());
     }
 }
