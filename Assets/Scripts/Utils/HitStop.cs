@@ -4,6 +4,7 @@ using UnityEngine;
 public class HitStop : MonoBehaviour
 {
     private Coroutine current;
+    private float savedScale = 1f;
 
     public void Stop(float duration = 0.05f)
     {
@@ -13,9 +14,10 @@ public class HitStop : MonoBehaviour
 
     private IEnumerator Routine(float duration)
     {
+        savedScale = Time.timeScale;
         Time.timeScale = 0f;
         yield return new WaitForSecondsRealtime(duration);
-        Time.timeScale = 1f;
+        if (!PauseController.IsPaused) Time.timeScale = savedScale;
         current = null;
     }
 }
