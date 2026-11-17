@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6185360410535050224
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8512556618983068852}
+  m_Layer: 0
+  m_Name: StompPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8512556618983068852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6185360410535050224}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1699972598514393948}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3268744637564201219
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,14 +102,16 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1699972598514393948}
-  - component: {fileID: 7054904860551116252}
-  - component: {fileID: 5510042354083856332}
   - component: {fileID: 2811737132075961418}
   - component: {fileID: 673743979603879048}
   - component: {fileID: 3271410192167574474}
   - component: {fileID: 9154822484488997675}
   - component: {fileID: 1415277970872171800}
-  m_Layer: 0
+  - component: {fileID: 5853442457709130795}
+  - component: {fileID: 8467625250085588913}
+  - component: {fileID: 2941451926494499290}
+  - component: {fileID: 131522081558667924}
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -100,9 +133,10 @@ Transform:
   m_Children:
   - {fileID: 1248001917632755156}
   - {fileID: 794665603886488410}
+  - {fileID: 8512556618983068852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &7054904860551116252
+--- !u!212 &2811737132075961418
 SpriteRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -162,7 +196,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!50 &5510042354083856332
+--- !u!50 &673743979603879048
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -189,7 +223,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &2811737132075961418
+--- !u!61 &3271410192167574474
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,7 +269,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7, y: 0.9}
   m_EdgeRadius: 0
---- !u!95 &673743979603879048
+--- !u!95 &9154822484488997675
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -257,7 +291,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &3271410192167574474
+--- !u!82 &1415277970872171800
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,7 +388,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &9154822484488997675
+--- !u!114 &5853442457709130795
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -380,12 +414,12 @@ MonoBehaviour:
   jumpBufferTime: 0.15
   fallMultiplier: 2.2
   lowJumpMultiplier: 3.5
-  animator: {fileID: 673743979603879048}
-  spriteRenderer: {fileID: 7054904860551116252}
+  animator: {fileID: 9154822484488997675}
+  spriteRenderer: {fileID: 2811737132075961418}
   hardLandingSpeed: 14
   hitStopDuration: 0.05
   hitStop: {fileID: 0}
-  source: {fileID: 3271410192167574474}
+  source: {fileID: 1415277970872171800}
   footsteps:
   - {fileID: 8300000, guid: 610aa363957f4ce53ad25bbcd1b0bccd, type: 3}
   - {fileID: 8300000, guid: 13ab0e5068d153d77debd5271efea8f7, type: 3}
@@ -397,7 +431,7 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 256
---- !u!114 &1415277970872171800
+--- !u!114 &8467625250085588913
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -409,3 +443,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246c9f5a08397c7e553cc3952f6fd2ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
+--- !u!114 &2941451926494499290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810444072997218502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c05d70029fb3429da2cb88ff3286132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 50
+  invulnerableTime: 0.7
+  knockbackForce: 8
+  respawn: {fileID: 8467625250085588913}
+--- !u!114 &131522081558667924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810444072997218502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18d59958d6d98d42cd2f6c4e01c59622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStomp
+  stompPoint: {fileID: 8512556618983068852}
+  radius: 0.3
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+  damage: 10
+  bounceForce: 9
