@@ -38,6 +38,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Range(0f, 0.3f)] private float pitchVariance = 0.12f;
     [SerializeField, Range(0.1f, 0.8f)] private float stepInterval = 0.3f;
 
+    [Header("Взаємодія")]
+    [SerializeField] private Transform interactPoint;
+    [SerializeField, Range(0.2f, 1.5f)] private float interactRadius = 0.6f;
+    [SerializeField] private LayerMask interactableLayer;
+
     private static readonly int SpeedHash = Animator.StringToHash("Speed");
 
     private Rigidbody2D body;
@@ -83,6 +88,9 @@ public class PlayerController : MonoBehaviour
         }
 
         moveInput = controls.Player.Move.ReadValue<Vector2>().x;
+
+        if (controls.Player.Interact.WasPressedThisFrame())
+            TryInteract();
 
         CheckLanding();
         UpdateFootsteps();
@@ -163,12 +171,24 @@ public class PlayerController : MonoBehaviour
             spriteRenderer.flipX = moveInput < 0f;
     }
 
+    private void TryInteract()
+    {
+        Collider2D hit = Physics2D.OverlapCircle(interactPoint.position, interactRadius, interactableLayer);
+        if (hit != null && hit.TryGetComponent(out IInteractable target))
+            target.Interact();
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (groundCheck != null)
         {
             Gizmos.color = Application.isPlaying && isGrounded ? Color.green : Color.red;
             Gizmos.DrawWireSphere(groundCheck.position, groundCheckRadius);
+        }
+        if (interactPoint != null)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawWireSphere(interactPoint.position, interactRadius);
         }
     }
 }

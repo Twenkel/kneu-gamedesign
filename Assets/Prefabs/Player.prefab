@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3268744637564201219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 794665603886488410}
+  m_Layer: 0
+  m_Name: InteractPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &794665603886488410
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3268744637564201219}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1699972598514393948}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2280811877951934895
 GameObject:
   m_ObjectHideFlags: 0
@@ -40,12 +71,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1699972598514393948}
-  - component: {fileID: 5204981594357487982}
-  - component: {fileID: 2795539560970855782}
   - component: {fileID: 7054904860551116252}
   - component: {fileID: 5510042354083856332}
   - component: {fileID: 2811737132075961418}
   - component: {fileID: 673743979603879048}
+  - component: {fileID: 3271410192167574474}
+  - component: {fileID: 9154822484488997675}
+  - component: {fileID: 1415277970872171800}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -67,9 +99,10 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1248001917632755156}
+  - {fileID: 794665603886488410}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &5204981594357487982
+--- !u!212 &7054904860551116252
 SpriteRenderer:
   serializedVersion: 3
   m_ObjectHideFlags: 0
@@ -129,7 +162,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
   m_BlendShapeWeights: []
---- !u!50 &2795539560970855782
+--- !u!50 &5510042354083856332
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -156,7 +189,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!61 &7054904860551116252
+--- !u!61 &2811737132075961418
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -202,7 +235,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.7, y: 0.9}
   m_EdgeRadius: 0
---- !u!95 &5510042354083856332
+--- !u!95 &673743979603879048
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -224,7 +257,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!82 &2811737132075961418
+--- !u!82 &3271410192167574474
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -321,7 +354,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &673743979603879048
+--- !u!114 &9154822484488997675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -347,15 +380,32 @@ MonoBehaviour:
   jumpBufferTime: 0.15
   fallMultiplier: 2.2
   lowJumpMultiplier: 3.5
-  animator: {fileID: 5510042354083856332}
-  spriteRenderer: {fileID: 5204981594357487982}
+  animator: {fileID: 673743979603879048}
+  spriteRenderer: {fileID: 7054904860551116252}
   hardLandingSpeed: 14
   hitStopDuration: 0.05
   hitStop: {fileID: 0}
-  source: {fileID: 2811737132075961418}
+  source: {fileID: 3271410192167574474}
   footsteps:
   - {fileID: 8300000, guid: 610aa363957f4ce53ad25bbcd1b0bccd, type: 3}
   - {fileID: 8300000, guid: 13ab0e5068d153d77debd5271efea8f7, type: 3}
   - {fileID: 8300000, guid: ad81202d692e3fe36df54bc4d42ff722, type: 3}
   pitchVariance: 0.12
   stepInterval: 0.3
+  interactPoint: {fileID: 794665603886488410}
+  interactRadius: 0.6
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 256
+--- !u!114 &1415277970872171800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810444072997218502}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 246c9f5a08397c7e553cc3952f6fd2ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRespawn
